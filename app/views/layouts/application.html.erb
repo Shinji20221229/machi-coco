@@ -5,10 +5,89 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <header>
+    <!--<ヘッダーの色>-->
+    <nav class="navbar navbar-expand-lg" style="background-color:  text-success;">
+      <!--トップ画面へのルートと画像-->
+      <%= link_to root_path("users/homes#top") do %>
+        <%= image_tag 'pcsp019.png', size: '150x150', class: "img-fluid" %>
+      <% end %>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <%# if not request.fullpath.include? "admin" %>
+        <% if user_signed_in? %>
+          <span class="navbar-brand mb-0 h1">ようこそ、<%= current_user.last_name %><%= current_user.first_name %>さん！！</span>
+          <li class="nav-item pl-3">
+            <%= link_to , class:"nav-link text-light" do %>
+              <button type="button" class="btn btn-light">マイページ</button>
+            <% end %>
+          </li>
+          <li class="nav-item pl-3">
+            <%= link_to , class:"nav-link text-light" do %>
+              <button type="button" class="btn btn-light">投稿一覧</button>
+            <% end %>
+          </li>
+          <li class="nav-item pl-3">
+            <%= link_to , class:"nav-link text-light" do %>
+              <button type="button" class="btn btn-light">ユーザー一覧</button>
+            <% end %>
+          </li>
+          <li class="nav-item pl-3">
+            <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+              <button type="button" class="btn btn-light">ログアウト</button>
+            <% end %>
+          </li>
+
+        <%# else %>
+        <!--  <li class="nav-item pl-3">-->
+        <!--    <%#= link_to , class:"nav-link text-light" do %>-->
+        <!--      <button type="button" class="btn btn-light">About</button>-->
+        <!--    <%# end %>-->
+        <!--  </li>-->
+        <!--  <li class="nav-item pl-3">-->
+        <!--    <%#= link_to , class:"nav-link text-light" do %>-->
+        <!--      <button type="button" class="btn btn-light">投稿一覧</button>-->
+        <!--    <%# end %>-->
+        <!--  </li>-->
+        <!--  <li class="nav-item pl-3">-->
+        <!--    <%#= link_to new_user_registration_path, class:"nav-link text-light" do %>-->
+        <!--      <button type="button" class="btn btn-light">新規登録</button>-->
+        <!--    <%# end %>-->
+        <!--  </li>-->
+        <!--  <li class="nav-item pl-3">-->
+        <!--    <%#= link_to , class:"nav-link text-light" do %>-->
+        <!--      <button type="button" class="btn btn-light">ログイン</button>-->
+        <!--    <%# end %>-->
+        <!--  </li>-->
+        <%# end %>
+
+        <%# else %>
+        <%# if admin_signed_in? %>
+          <!--<li class="nav-item pl-3">-->
+          <!--  <%#= link_to , class:"nav-link text-light" do %>-->
+          <!--    <button type="button" class="btn btn-light">投稿一覧</button>-->
+            <%# end %>
+          <!--</li>-->
+          <!--<li class="nav-item pl-3">-->
+          <!--  <%#= link_to , class:"nav-link text-light" do %>-->
+          <!--    <button type="button" class="btn btn-light">ユーザー一覧</button>-->
+          <!--  <%# end %>-->
+          <!--</li>-->
+          <!--<li class="nav-item pl-3">-->
+          <!--  <%#= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>-->
+          <!--    <button type="button" class="btn btn-light">ログアウト</button>-->
+          <!--  <%# end %>-->
+          <!--</li>-->
+        <% end %>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
   <body>
     <%= yield %>
