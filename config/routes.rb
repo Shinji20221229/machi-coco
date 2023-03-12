@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'tweet/new'
+  get 'tweet/index'
+  get 'tweet/show'
+  get 'tweet/edit'
+  get 'tweet/update'
+  get 'tweet/destroy'
   devise_for :users,skip: [:passwords], controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',
@@ -18,8 +24,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
-
   end
+  resources :tweets, only: [:new, :create, :index, :show, :update, :destroy]
+
   post 'users' => 'users#create'
   get 'users/new'
   get 'users/create'
