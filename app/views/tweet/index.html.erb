@@ -31,6 +31,9 @@
                   <td>
                   <%= link_to tweet.content_image, tweet_path(tweet.id) %>
                   </td>
+                  <td>
+                    <%= tweet.content %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
