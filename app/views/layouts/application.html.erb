@@ -23,17 +23,17 @@
           <% if user_signed_in? %>
             <span class="navbar-brand mb-0 h1">ようこそ、<%= current_user.last_name %><%= current_user.farst_name %>さん！！</span>
             <li class="nav-item pl-3">
-              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+              <%= link_to class:"nav-link text-light" do %>
                 <button type="button" class="btn btn-light">マイページ</button>
               <% end %>
             </li>
             <li class="nav-item pl-3">
-              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+              <%= link_to class:"nav-link text-light" do %>
                 <button type="button" class="btn btn-light">投稿一覧</button>
               <% end %>
             </li>
             <li class="nav-item pl-3">
-              <%= link_to destroy_user_session_path, method: :delete,  class:"nav-link text-light" do %>
+              <%= link_to class:"nav-link text-light" do %>
                 <button type="button" class="btn btn-light">ユーザー一覧</button>
               <% end %>
             </li>

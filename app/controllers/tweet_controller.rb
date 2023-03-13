@@ -1,9 +1,12 @@
-class TweetController < ApplicationController
+class Users::TweetsController < ApplicationController
   def new
     @tweet = Tweet,new
   end
 
   def index
+    @tweets = Tweet.all
+    @tweet = Tweet.new
+    @user = current_user
   end
 
   def show
