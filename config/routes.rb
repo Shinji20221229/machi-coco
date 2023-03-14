@@ -26,16 +26,6 @@ Rails.application.routes.draw do
     resources :tweets, only: [:new, :create, :index, :show, :update, :destroy]
     resources :users, only: [:show, :edit, :update, :index]
   end
-  get "users/show" => "users#show", as:"users_my_page"
-
-  post 'users' => 'users#create'
-  get 'users/new'
-  get 'users/create'
-  get 'users/index'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy'
 
 
 
