@@ -23,7 +23,7 @@
           <% if user_signed_in? %>
             <span class="navbar-brand mb-0 h1">ようこそ、<%= current_user.last_name %><%= current_user.farst_name %>さん！！</span>
             <li class="nav-item pl-3">
-              <%= link_to class:"nav-link text-light" do %>
+              <%= link_to users_my_page_path, class:"nav-link text-light" do %>
                 <button type="button" class="btn btn-light">マイページ</button>
               <% end %>
             </li>

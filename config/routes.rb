@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   scope module: :users do
 
     resources :tweets, only: [:new, :create, :index, :show, :update, :destroy]
+    resources :users, only: [:show, :edit, :update, :index]
   end
+  get "users/show" => "users#show", as:"users_my_page"
 
   post 'users' => 'users#create'
   get 'users/new'
