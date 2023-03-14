@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
   end
 
-  scope module: :user do
+  scope module: :users do
 
     resources :tweets, only: [:new, :create, :index, :show, :update, :destroy]
   end

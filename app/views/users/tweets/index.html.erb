@@ -1,5 +1,5 @@
 <div class="container px-5 px-sm-0">
-  <% if @tewwt.errors.any? %>
+  <% if @tweet.errors.any? %>
     <%= @tweet.errors.count %>errors prohivited this obj from being saved:
     <ul>
       <% @tweet.errors.full_messages.each do |tweet| %>
