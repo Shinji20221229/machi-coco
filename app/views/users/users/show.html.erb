@@ -1,19 +1,12 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="mt-5 offset-md-1">
-      <h2><span class="bg-light">マイページ<span></h2>
-    </div>
-    <div class="mt-5">
       <h2><span class="bg-light">登録情報</span></h2>
-    </div>
-    <div>
-      <h3><%= @user.last_name %> <%= @user.farst_name %></h3>
-    </td>
-    <% @tweets.each do |tweet| %>
-      <%= link_to user_path(@user.id) do %>
-      <%= image_tag @tweet.user.get_profile_image(100,100) %>
-      <% end %>
-    <% end %>
+      <div>
+        <h3><%= @user.last_name %> <%= @user.farst_name %></h3>
+      </td>
+        <%= image_tag @tweet.user.get_profile_image(100,100) %>
+      </div>
     </div>
   </div>
 </div>
