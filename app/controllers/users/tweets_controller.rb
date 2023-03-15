@@ -1,6 +1,6 @@
 class Users::TweetsController < ApplicationController
   def new
-    @tweet = Tweet,new
+    @tweet = Tweet.new
   end
 
   def index
