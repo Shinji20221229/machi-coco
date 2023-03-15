@@ -12,7 +12,6 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     @tweets = @user.tweets
     @tweet = Tweet.new
-   #byebug
   end
 
   def edit
@@ -32,7 +31,7 @@ class Users::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction)
+    params.require(:user).permit(:name, :profile_image)
   end
 
   def is_matching_login_user
