@@ -3,24 +3,17 @@
     <div class="mt-5 offset-md-1">
       <h2><span class="bg-light">マイページ<span></h2>
     </div>
-
-    <div class="row">
-      <div class="mt-5">
-        <h2><span class="bg-light">登録情報</span></h2>
-      </div>
-      <div class="mt-5 offset-md-1">
-        <%= link_to "編集",edit_user_path, class: 'btn btn-success' %>
-      </div>
-
-      <table class="table table-bordered border-primary">
-        <tr>
-          <td class="table-active">氏名</td>
-          <td>
-            <%= @user.last_name %> <%= @user.farst_name %>
-          </td>
-        </tr>
-
-      </table>
+    <div class="mt-5">
+      <h2><span class="bg-light">登録情報</span></h2>
+    </div>
+    <div>
+      <h3><%= @user.last_name %> <%= @user.farst_name %></h3>
+    </td>
+    <% @tweets.each do |tweet| %>
+      <%= link_to user_path(@user.id) do %>
+      <%= image_tag @tweet.user.get_profile_image(100,100) %>
+      <% end %>
+    <% end %>
     </div>
   </div>
 </div>
