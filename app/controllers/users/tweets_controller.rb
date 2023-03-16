@@ -17,8 +17,12 @@ class Users::TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @tweet.save
-    redirect_to tweet_path
+    if @tweet.save
+      redirect_to tweet_path(@tweet), notice: "投稿に失敗しました"
+    else
+      @tweets = Tweet.all
+      redirect_to tweet_path
+    end
   end
 
   def edit
