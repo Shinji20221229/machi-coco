@@ -1,41 +1,21 @@
-<table class="table">
-  <tr><%= image_tag current_user.get_profile_image,size: "100x100" %></tr>
-  <tr>
-    <th>氏名</th>
-    <th><%= current_user.last_name %> <%= current_user.farst_name %></th>
-  </tr>
-  <tr><%#= link_to "#{tweet.tweet_comments.count}コメント", tweet_path(tweet.id) %></tr>
-</table>
-<!--ユーザー情報変更ボタン-->
-<%= link_to edit_user_path(current_user), class: 'btn btn-outline-secondary btn-block' do %>
-  <i class="fas fa-user-cog"></i>
-<% end %>
+<div class="col-md-3">
+<%= image_tag current_user.get_profile_image,size: "100x100" %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>氏名</td>
+        <td><%= current_user.last_name %> <%= current_user.farst_name %></td>
+      </tr>
+      <tr><%#= link_to "#{tweet.tweet_comments.count}コメント", tweet_path(tweet.id) %></tr>
+    </tbody>
+  </table>
+  <!--ユーザー情報変更ボタン-->
+  <%= link_to edit_user_path(current_user), class: 'btn btn-outline-secondary btn-block' do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
 
-<!--投稿ページへのリンクボタン-->
-<%= link_to new_tweet_path, class:"btn btn-outline-secondary btn-block" do %>
-  <button type="button" class="btn btn-light">Tweet</button>
-<% end %>
-
-
-
-<!--<div class="col-md-3">-->
-<!--  <h2>User info</h2>-->
-<!--  <%#= image_tag user.get_profile_image,size: "250x250" %>-->
-<!--    <table class="table">-->
-<!--      <tbody>-->
-<!--        <tr>-->
-<!--          <td>氏名</td>-->
-<!--          <td>-->
-<!--            <%#= user.last_name %> <%#= user.farst_name %>-->
-<!--          </td>-->
-<!--        </tr>-->
-<!--    </table>-->
-<!--    <%#= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>-->
-<!--      <i class="fas fa-user-cog"></i>-->
-<!--    <%# end %>-->
-
-    <!--投稿ページへのリンクボタン-->
-<!--    <%#= link_to new_tweet_path, class:"btn btn-outline-secondary btn-block" do %>-->
-<!--      <button type="button" class="btn btn-light">Tweet</button>-->
-<!--    <%# end %>-->
-<!--</div>-->
+  <!--投稿ページへのリンクボタン-->
+  <%= link_to new_tweet_path, class:"btn btn-outline-secondary btn-block" do %>
+    <button type="button" class="btn btn-light">Tweet</button>
+  <% end %>
+</div>
