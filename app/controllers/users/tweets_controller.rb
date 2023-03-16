@@ -12,6 +12,7 @@ class Users::TweetsController < ApplicationController
   def show
     @tweet = Tweet.find(params[:id])
     @user = @tweet.user
+    @tweet_comment = TweetComment.new
   end
 
   def create

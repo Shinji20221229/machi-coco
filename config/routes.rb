@@ -23,7 +23,10 @@ Rails.application.routes.draw do
 
   scope module: :users do
 
-    resources :tweets, only: [:new, :create, :index, :show, :update, :destroy]
+    resources :tweets, only: [:new, :create, :index, :show, :update, :destroy] do
+      resources :tweet_comments, only: [:create, :destroy]
+    end
+
     resources :users, only: [:show, :edit, :update, :index]
 
   end

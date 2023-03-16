@@ -4,6 +4,7 @@
     <th>氏名</th>
     <th><%= user.last_name %> <%= user.farst_name %></th>
   </tr>
+  <tr><%= link_to "#{tweet.tweet_comments.count}コメント", tweet_path(tweet.id) %></tr>
 </table>
 <!--ユーザー情報変更ボタン-->
 <%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
