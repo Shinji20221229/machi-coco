@@ -30,9 +30,20 @@ class Users::TweetsController < ApplicationController
   end
 
   def update
+    @tweet = Tweet.new(tweet_params)
+    @tweet.user_id = current_user.id
+    if @tweet.save
+      redirect_to tweet_path(@tweet), notice: "投稿しました"
+    else
+      @tweets = Tweet.all
+      render 'index'
+    end
   end
 
   def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to tweets_path, notice: "削除しました"
   end
 
   private

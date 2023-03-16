@@ -1,21 +1,40 @@
-<div class="col-md-3">
-  <h2>User info</h2>
-  <%= image_tag @user.get_profile_image,size: "250x250" %>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>氏名</td>
-          <td>
-            <%= user.last_name %> <%= user.farst_name %>
-          </td>
-        </tr>
-    </table>
-    <%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
-      <i class="fas fa-user-cog"></i>
-    <% end %>
+<table class="table">
+  <tr><%= image_tag user.get_profile_image,size: "100x100" %></tr>
+  <tr>
+    <th>氏名</th>
+    <th><%= user.last_name %> <%= user.farst_name %></th>
+  </tr>
+</table>
+<!--ユーザー情報変更ボタン-->
+<%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+  <i class="fas fa-user-cog"></i>
+<% end %>
+
+<!--投稿ページへのリンクボタン-->
+<%= link_to new_tweet_path, class:"btn btn-outline-secondary btn-block" do %>
+  <button type="button" class="btn btn-light">Tweet</button>
+<% end %>
+
+
+
+<!--<div class="col-md-3">-->
+<!--  <h2>User info</h2>-->
+<!--  <%#= image_tag user.get_profile_image,size: "250x250" %>-->
+<!--    <table class="table">-->
+<!--      <tbody>-->
+<!--        <tr>-->
+<!--          <td>氏名</td>-->
+<!--          <td>-->
+<!--            <%#= user.last_name %> <%#= user.farst_name %>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--    <%#= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>-->
+<!--      <i class="fas fa-user-cog"></i>-->
+<!--    <%# end %>-->
 
     <!--投稿ページへのリンクボタン-->
-    <%= link_to new_tweet_path, class:"btn btn-outline-secondary btn-block" do %>
-      <button type="button" class="btn btn-light">Tweet</button>
-    <% end %>
-</div>
+<!--    <%#= link_to new_tweet_path, class:"btn btn-outline-secondary btn-block" do %>-->
+<!--      <button type="button" class="btn btn-light">Tweet</button>-->
+<!--    <%# end %>-->
+<!--</div>-->
