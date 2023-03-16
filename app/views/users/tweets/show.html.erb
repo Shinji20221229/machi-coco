@@ -10,22 +10,23 @@
           <tr>
             <td>
               <%= link_to user_path(@user.id) do %>
-                <%= image_tag @user.get_profile_image(100,100) %>
-              <p><%= @user.name %></p>
+                <%= image_tag @user.get_profile_image,size: "250x250" %>
+              <% end %>
+              <p><%= @user.last_name %> <%= @user.farst_name %></p>
             </td>
             <td>
-              <%= link_to tweet_path(tweet.id) do %>
-                <%= @tweet.content_image(300,250) %>
+              <%= link_to tweet_path(@tweet.id) do %>
+                <%= image_tag @tweet.tweet_image,size: "300x250" %>
               <% end %>
             </td>
             <td>
-              <%= link_to tweet_path(tweet.id) do %>
+              <%= link_to tweet_path(@tweet.id) do %>
                 <%= @tweet.content %>
               <% end %>
             </td>
             <td>
               <% if @tweet.user == current_user %>
-                <%= link_to "編集",edit_tweet_path(@tweet.id), class="btn btn-sm btn-success" %>
+                <%= link_to "編集",edit_tweet_path(@tweet.id), class:"btn btn-sm btn-success" %>
               <% end %>
             </td>
             <td>
@@ -36,11 +37,12 @@
           </tr>
         </tbody>
       </table>
+
       <!--<div class="commnets_area">-->
-      <!--  <%#= form_with model: [:@tweet, @tweet_comment] do |f| %>-->
-      <!--    <%#= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>-->
-      <!--    <%#= f.submit "送信" %>-->
-      <!--  <%# end %>-->
+        <%#= form_with model: [:@tweet, @tweet_comment] do |f| %>
+          <%#= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+          <%#= f.submit "送信" %>
+        <%# end %>
       <!--</div>-->
     </div>
   </div>

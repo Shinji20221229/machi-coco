@@ -50,7 +50,7 @@ class Users::TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:content, :content_image)
+    params.require(:tweet).permit(:content, :tweet_image, :content_image)
   end
 
 end
