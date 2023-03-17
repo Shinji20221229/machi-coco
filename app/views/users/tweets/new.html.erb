@@ -2,14 +2,24 @@
     <div class="row">
         <div class="col-auto">
           <h2>Tweet</h2>
-            <%= form_with model: @tweet do |f| %>
-              <h4>画像</h4>
-                 <%= f.file_field :tweet_image, accept: "image/*" %>
-              <h4>場所</h4>
-                <%= f.text_area :content %>
-                <%= f.hidden_field :content_image, value: "test" %>
-              <%= f.submit 'Tweet' %>
-            <% end %>
+
+          <% if @tweet.errors.any? %>
+            <%= @tweet.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @tweet.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+
+          <%= form_with model: @tweet do |f| %>
+            <h4>画像</h4>
+               <%= f.file_field :tweet_image, accept: "image/*" %>
+            <h4>場所</h4>
+              <%= f.text_area :content %>
+              <%= f.hidden_field :content_image, value: "test" %>
+            <%= f.submit 'Tweet' %>
+          <% end %>
         </div>
     </div>
 </div>

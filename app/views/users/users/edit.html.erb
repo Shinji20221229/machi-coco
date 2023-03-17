@@ -6,14 +6,15 @@
       <%= form_with model:@user, local:true do |f| %>
         <div class="form-group">
           <h5><span class="bg-light"><%= f.label :氏名　%></span></h5>
-          <%= @user.last_name %> <%= @user.farst_name %>
+          <%= f.text_field :last_name %>
+          <%= f.text_field :farst_name %>
         </div>
         <div class="form-group">
           <h5><span class="bg-light"><%= f.label :プロフィール画像　%></span></h5>
           <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
         </div>
         <div class="form-group">
-          <%= f.submit class: 'btn btn-secondary' %>
+          <%= f.submit "編集内容を保存", class: 'btn btn-success btn-sm' %>
         </div>
       <% end %>
     </div>

@@ -1,0 +1,19 @@
+class FavoritesController < ApplicationController
+
+  def create
+    tweet =Tweet.find(params[:tweet_id])
+    favorite = current_user.favorites.new(tweet_id: tweet.id)
+    favorites.save
+    @tweet = Tweet.find(params[:tweet_id])
+    render "create"
+  end
+
+  def destroy
+    tweet = Tweet.find(params[:tweet_id])
+    favorite = current_user.favorites.find_by(tweet_id: tweet.id)
+    favorite.destroy
+    @tweet = Tweet.find(params[:tweet_id])
+    render "create"
+  end
+
+end

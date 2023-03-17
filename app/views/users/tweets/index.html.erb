@@ -13,27 +13,27 @@
       <div class="col-md-8 offset-md-1">
         <h2>Tweets</h2>
           <table class="table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>場所</th>
-                <th></th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
+
             <tbody>
               <% @tweets.each do |tweet| %>
                 <tr>
                   <td>
-                    <%= link_to user_path(tweet.user) do %>
-                    <%= image_tag tweet.user.get_profile_image,size: "100x100" %>
-                    <% end %>
+                    <%#= link_to user_path(tweet.user) do %>
+                      <%= image_tag @user.get_profile_image,size: "50x50" %>
+                    <%# end %>
                   </td>
                   <td>
-                  <%= link_to tweet.content_image, tweet_path(tweet.id) %>
+                    <%#= link_to tweet_path(@tweet.id) do %>
+                      <%#= image_tag @tweet.tweet_image,size: "300x250" %>
+                    <%# end %>
                   </td>
                   <td>
-                    <%= tweet.content %>
+                    <%#= link_to tweet_path(@tweet.id) do %>
+                      <%= @tweet.content %>
+                    <%# end %>
+                  </td>
+                  <td>
+                    <%= link_to "#{@tweet.tweet_comments.count} コメント", tweet_path(tweet.id) %>
                   </td>
                 </tr>
               <% end %>
