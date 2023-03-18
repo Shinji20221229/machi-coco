@@ -16,7 +16,7 @@
             </td>
             <td>
               <%= link_to tweet_path(@tweet.id) do %>
-                <%= image_tag @tweet.tweet_image,size: "300x250" %>
+                <%= image_tag @tweet.get_tweet_image,size: "300x250" %>
               <% end %>
             </td>
             <td>

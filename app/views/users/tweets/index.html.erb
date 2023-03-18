@@ -1,3 +1,4 @@
+<p class="notice"></p>
 <div class="container px-5 px-sm-0">
   <% if @tweet.errors.any? %>
     <%= @tweet.errors.count %>errors prohivited this obj from being saved:
@@ -18,19 +19,14 @@
               <% @tweets.each do |tweet| %>
                 <tr>
                   <td>
-                    <%#= link_to user_path(tweet.user) do %>
-                      <%= image_tag @user.get_profile_image,size: "50x50" %>
-                    <%# end %>
+                    <%= link_to tweet_path(tweet.id) do %>
+                      <%= image_tag tweet.get_tweet_image,size: "300x250" %>
+                    <% end %>
                   </td>
                   <td>
-                    <%#= link_to tweet_path(@tweet.id) do %>
-                      <%#= image_tag @tweet.tweet_image,size: "300x250" %>
-                    <%# end %>
-                  </td>
-                  <td>
-                    <%#= link_to tweet_path(@tweet.id) do %>
-                      <%= @tweet.content %>
-                    <%# end %>
+                    <%= link_to tweet_path(tweet.id) do %>
+                      <%= tweet.content %>
+                    <% end %>
                   </td>
                   <td>
                     <%= link_to "#{@tweet.tweet_comments.count} コメント", tweet_path(tweet.id) %>

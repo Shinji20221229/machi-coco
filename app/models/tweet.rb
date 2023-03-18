@@ -11,4 +11,8 @@ class Tweet < ApplicationRecord
    favorites.exists?(user_id: user.id)
  end
 
+ def get_tweet_image
+    (tweet_image.attached?) ? tweet_image : 'no_image.jpg'
+ end
+
 end
