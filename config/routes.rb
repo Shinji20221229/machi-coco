@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+  get 'relationships/destroy'
   devise_for :users,skip: [:passwords], controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
 
   root to: "users/homes#top"
   get '/about' => "users/homes#about", as: "about"
+  get "search" => "searches#search"
   namespace :admin do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
@@ -26,9 +29,16 @@ Rails.application.routes.draw do
     resources :tweets, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :tweet_comments, only: [:create, :destroy]
       resources :favorites, only: [:create, :destroy]
+
     end
 
     resources :users, only: [:show, :edit, :update, :index]
+
+    resources :users do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
 
   end
 

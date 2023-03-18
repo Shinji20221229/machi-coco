@@ -6,9 +6,20 @@
         <td>氏名</td>
         <td><%= current_user.last_name %> <%= current_user.farst_name %></td>
       </tr>
-      <tr><%#= link_to "#{tweet.tweet_comments.count}コメント", tweet_path(tweet.id) %></tr>
+      <tr>
+        <td>コメント件数: <%= @tweet.tweet_comments.count %></td>
+      </tr>
+      <tr>
+        <th>フォロー</th>
+        <th><%= link_to current_user.followings.count, user_followings_path(current_user) %></th>
+      </tr>
+      <tr>
+        <th>フォロワー</th>
+        <th><%= link_to current_user.followers.count, user_followers_path(current_user) %></th>
+      </tr>
     </tbody>
   </table>
+
   <!--ユーザー情報変更ボタン-->
   <%= link_to edit_user_path(current_user), class: 'btn btn-outline-secondary btn-block' do %>
     <i class="fas fa-user-cog"></i>

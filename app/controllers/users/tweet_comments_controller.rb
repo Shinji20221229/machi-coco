@@ -1,4 +1,4 @@
-class TweetCommentsController < ApplicationController
+class Users::TweetCommentsController < ApplicationController
   def create
     tweet = Tweet.find(params[:tweet_id])
     comment = current_user.tweet_comments.new(tweet_comment_params)
