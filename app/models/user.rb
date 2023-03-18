@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :last_name,presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :farst_name,presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
+  # フォロー・フォロワー分岐
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -31,8 +32,24 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  # ユーザー画像
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?", "#{word}")
+    else
+      @user = User.all
+    end
   end
 
 end

@@ -7,12 +7,27 @@ class Tweet < ApplicationRecord
   validates :content,presence:true,length:{maximum:200}
   validates :tweet_image,presence:true
 
- def favorited_by?(user)
+  def favorited_by?(user)
    favorites.exists?(user_id: user.id)
- end
+  end
 
- def get_tweet_image
+  def get_tweet_image
     (tweet_image.attached?) ? tweet_image : 'no_image.jpg'
- end
+  end
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @tweet = Tweet.where("title LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @tweet = Tweet.where("title LIKE?", "#{word}")
+    elsif search == "backward_match"
+      @tweet = Tweet.where("title LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @tweet = Tweet.where("title LIKE?", "#{word}")
+    else
+      @tweet = Tweet.all
+    end
+  end
 
 end
