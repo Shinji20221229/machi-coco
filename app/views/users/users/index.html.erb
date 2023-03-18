@@ -6,7 +6,7 @@
       <h2><span class="bg-light">ユーザー一覧<span></h2>
         <table class="table">
           <tbody>
-            <%= @users.each do |user| %>
+            <% @users.each do |user| %>
               <tr>
                 <td><%= image_tag user.get_profile_image,size: "100x100" %></td>
                 <td><%= user.last_name %> <%= user.farst_name %></td>

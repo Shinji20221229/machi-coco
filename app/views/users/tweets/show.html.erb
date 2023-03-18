@@ -37,7 +37,7 @@
             <td>
               <% if @tweet.favorited_by?(current_user) %>
                 <p>
-                  <%= link_to tweet_favorites_path(@tweet), method: :delete do %>
+                  <%= link_to tweet_favorite_path(@tweet), method: :delete do %>
                     ♥<%= @tweet.favorites.count %>
                   <% end %>
                 </p>
