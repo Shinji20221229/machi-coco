@@ -8,7 +8,7 @@ class Tweet < ApplicationRecord
   validates :tweet_image,presence:true
 
   def favorited_by?(user)
-   favorites.exists?(user_id)
+   favorites.find_by(tweet_id: self.id, user_id: user.id)
   end
 
   def get_tweet_image

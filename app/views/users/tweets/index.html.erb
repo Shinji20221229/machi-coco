@@ -31,6 +31,9 @@
                       <%= tweet.content %>
                     <% end %>
                   </td>
+                  <td class=<%= "favalit" + tweet.id.to_s %>>
+                    <%= render 'favorites/favorit', tweet: tweet %>
+                  </td>
                   <td>
                     <%= link_to "#{@tweet.tweet_comments.count} コメント", tweet_path(tweet.id) %>
                   </td>

@@ -35,20 +35,8 @@
               <% end %>
             </td>
             <% if user_signed_in? %>
-              <td>
-                <% if @tweet.favorited_by?(current_user) %>
-                  <p>
-                    <%= link_to tweet_favorite_path(@tweet), method: :delete do %>
-                      ♥<%= @tweet.favorites.count %>
-                    <% end %>
-                  </p>
-                  <% else %>
-                  <p>
-                    <%= link_to tweet_favorites_path(@tweet), method: :post do %>
-                      ♡<%= @tweet.favorites.count %>
-                    <% end %>
-                  </p>
-                <% end %>
+              <td class=<%= "favalit" + @tweet.id.to_s %>>
+                <%= render 'favorites/favorit', tweet: @tweet %>
               </td>
             <% end %>
             <td>

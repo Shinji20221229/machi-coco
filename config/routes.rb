@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   root to: "users/homes#top"
   get '/about' => "users/homes#about", as: "about"
   get "search" => "users/searches#search"
-  
-  
+
+
   namespace :admin do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
     resources :tweets, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :tweet_comments, only: [:create, :destroy]
-      resources :favorites, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
 
     end
 
