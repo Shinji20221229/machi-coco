@@ -5,7 +5,7 @@
     <div class="col-md-8 offset-md-1">
       <h2><span class="bg-light">フォロワー一覧<span></h2>
       <% if @users.exists? %>
-        <% @users.eadh do |user| %>
+        <% @users.each do |user| %>
           <table class="table">
             <thead>
               <th></th>

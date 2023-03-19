@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   root to: "users/homes#top"
   get '/about' => "users/homes#about", as: "about"
-  get "search" => "searches#search"
+  get "search" => "users/searches#search"
+  
+  
   namespace :admin do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
