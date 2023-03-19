@@ -9,8 +9,10 @@
     </ul>
   <% end %>
     <div class="row">
-    <!--部分テンプレート-->
-    <%= render 'layouts/newform' %>
+    <!--登録ユーザーのみ表示部分テンプレート-->
+    <% if user_signed_in? %>
+      <%= render 'layouts/newform' %>
+    <% end %>
       <div class="col-md-8 offset-md-1">
         <h2>Tweets</h2>
         <%= render 'users/searches/search' %>
