@@ -8,10 +8,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
-    sessions: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
+  devise_for :admins, skip: [:passwords], controllers: {
+    sessions: 'admins/sessions'
   }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -24,7 +22,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
+    resources :tweets, only: [:index, :show, :update]
   end
+
 
   scope module: :users do
 
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
     end
 
-    resources :users, only: [:show, :edit, :update, :index]
+    resources :users, only: [:show, :edit, :update, :destroy, :index]
 
     resources :users do
       resource :relationships, only: [:create, :destroy]

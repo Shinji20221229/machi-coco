@@ -15,6 +15,13 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+# 　退会機能
+  has_many :tweets, :dependent => :destroy
+  # 退会ユーザーに日続くお気に入りも削除する場合
+  has_many :favorites, :dependent => :destroy
+  # 退会ユーザーに紐づくコメントも削除する場合
+  # has_many :comments, :dependent => :destroy
+
 
   validates :last_name,presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :farst_name,presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true

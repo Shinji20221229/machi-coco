@@ -21,11 +21,10 @@
         <%#= link_to "#{tweet.tweet_comments.count}コメント", tweet_path(tweet.id) %>
       </div>
 
-      <% if user_signed_in? %>
-        <div class="mt-5 offset-md-1">
-          <%= link_to "編集する", edit_user_path, class: 'btn btn-success' %>
-        </div>
-      <% end %>
+
+      <div class="mt-5 offset-md-1">
+        <%= link_to "編集する", edit_user_path, class: 'btn btn-success' %>
+      </div>
 
     </div>
   </div>

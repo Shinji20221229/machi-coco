@@ -1,5 +1,7 @@
 class Users::UsersController < ApplicationController
 
+  before_action :set_user, :only => [:show, :favorites, :comments, :destroy]
+
   def index
     @users = User.all
     @user = current_user
@@ -26,10 +28,22 @@ class Users::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "退会処理をしました"
+    redirect_to root_path
+  end
+
+
   private
 
   def user_params
     params.require(:user).permit(:name, :profile_image)
+  end
+
+  def set_user
+    @user = User.find_by(:id => params[:id])
   end
 
   def is_matching_login_user

@@ -34,6 +34,7 @@
                 <%= link_to "削除",tweet_path(@tweet), method: :delete, class:"btn btn-sm btn-danger" %>
               <% end %>
             </td>
+            <!--いいね機能-->
             <% if user_signed_in? %>
               <td class=<%= "favalit" + @tweet.id.to_s %>>
                 <%= render 'favorites/favorit', tweet: @tweet %>

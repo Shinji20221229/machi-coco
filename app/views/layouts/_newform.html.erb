@@ -7,9 +7,6 @@
         <td><%= current_user.last_name %> <%= current_user.farst_name %></td>
       </tr>
       <tr>
-        <td>コメント件数: <%#= tweet.tweet_comments.count %></td>
-      </tr>
-      <tr>
         <th>フォロー</th>
         <th><%= link_to current_user.followings.count, user_followings_path(current_user) %></th>
       </tr>

@@ -7,11 +7,23 @@
           自分の知らない風景を探しに行きましょう！
         </p>
 
-      <h3>新着投稿</h3>
-        <div class="tweets-content">
+      <!--<h3>新着投稿</h3>-->
+      <!--  <div class="tweets-content">-->
+      <!--    <%#= @tweet.first(4).each do |tweet| %>-->
+      <!--      <div class="col-md-3 mx-auto">-->
+      <!--        <%#= link_to tweet_path(tweet.id) do %>-->
+      <!--          <%#= image_tag tweet.get_tweet_image, size: '200x150' %>-->
+      <!--        <%# end %>-->
+      <!--        <p><%#= tweet.content %></p>-->
+      <!--      </div>-->
+      <!--    <%# end %>-->
+      <!--  </div>-->
 
+      <div class="row">
+        <div class="col-12 text-right">
+          <%= link_to "Tweetを見る >>", tweets_path %>
         </div>
-
+      </div>
     </div>
   </div>
 </div>
