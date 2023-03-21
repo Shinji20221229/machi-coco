@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  devise_for :admins, skip: [:passwords], controllers: {
-    sessions: 'admins/sessions'
+  devise_for :admin, skip: [:passwords], controllers: {
+    sessions: 'admin/sessions',
+    passwords: 'admin/passwords',
+    registrations: 'admin/registrations'
   }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
