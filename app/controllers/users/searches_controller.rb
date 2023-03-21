@@ -1,14 +1,10 @@
 class Users::SearchesController < ApplicationController
   before_action :authenticate_user!
 
-  def search
-    @range = params[:range]
-
-    if @range == "User"
-      @users = User.looks(params[:search], params[:word])
-    else
-      @tweets = Tweet.looks(params[:search], params[:word])
-    end
+  def new_guest
+    user = User.guest
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました'
   end
 
 end

@@ -18,4 +18,11 @@ class Users::RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
+
+  def ensure_user
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーは削除できません'
+    end
+  end
+
 end
