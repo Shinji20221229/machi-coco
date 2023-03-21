@@ -52,9 +52,29 @@
                 <button type="button" class="btn btn-light">ログイン</button>
               <% end %>
             </li>
-          <% end %>
-
           <% else %>
+            <li class="nav-item pl-3">
+              <%= link_to about_path, class:"nav-link text-light" do %>
+                <button type="button" class="btn btn-light">About</button>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_session_path, class:"nav-link text-light" do %>
+                <button type="button" class="btn btn-light">ログイン</button>
+              <% end %>
+            </li>
+            <li class="nav-item pl-3">
+              <%= link_to user_session_path, class:"nav-link text-light" do %>
+                <button type="button" class="btn btn-light">ログイン</button>
+              <% end %>
+            </li>
+            <li class="nav-item pl-3">
+              <%= link_to user_session_path, class:"nav-link text-light" do %>
+                <button type="button" class="btn btn-light">ログイン</button>
+              <% end %>
+            </li>
+
+          <% end %>
           <% if admin_signed_in? %>
             <li class="nav-item pl-3">
               <%= link_to admin_tweets_path, class:"nav-link text-light" do %>

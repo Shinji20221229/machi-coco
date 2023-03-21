@@ -33,7 +33,7 @@
                   </td>
                   <td id="like_<%= tweet.id %>">
                     <% if user_signed_in? %>
-                      <%= render 'favorites/favorit', tweet: tweet %>
+                      <%= render 'users/favorites/favorit', tweet: tweet %>
                     <% end %>
                   </td>
                   <td>
