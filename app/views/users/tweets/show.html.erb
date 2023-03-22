@@ -36,9 +36,11 @@
             </td>
             <!--いいね機能-->
             <% if user_signed_in? %>
-              <td class=<%= "favalit" + @tweet.id.to_s %>>
-                <%= render 'favorites/favorit', tweet: @tweet %>
-              </td>
+              <% if @tweet.user != current_user %>
+                <td class=<%= "favalit" + @tweet.id.to_s %>>
+                  <%= render 'users/favorites/favorit', tweet: @tweet %>
+                </td>
+              <% end %>
             <% end %>
             <td>
               <p>コメント件数: <%= @tweet.tweet_comments.count %></p>

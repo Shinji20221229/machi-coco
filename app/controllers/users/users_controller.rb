@@ -12,6 +12,7 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     @tweets = @user.tweets
     @tweet = Tweet.new
+    @tweets = @user.tweets.page(params[:page])
   end
 
   def edit

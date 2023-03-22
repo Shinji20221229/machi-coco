@@ -6,6 +6,7 @@
     <% end %>
     <div class="col-md-8 offset-md-1">
       <h2><span class="bg-light">ユーザー一覧<span></h2>
+      <%= render 'users/searches/search' %>
         <table class="table">
           <tbody>
             <% @users.each do |user| %>

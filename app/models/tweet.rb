@@ -18,13 +18,13 @@ class Tweet < ApplicationRecord
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @tweet = Tweet.where("title LIKE?", "#{word}")
+      @tweet = Tweet.where("content LIKE?", "#{word}")
     elsif search == "forward_match"
-      @tweet = Tweet.where("title LIKE?", "#{word}")
+      @tweet = Tweet.where("content LIKE?", "%#{word}")
     elsif search == "backward_match"
-      @tweet = Tweet.where("title LIKE?", "#{word}")
+      @tweet = Tweet.where("content LIKE?", "#{word}%")
     elsif search == "partial_match"
-      @tweet = Tweet.where("title LIKE?", "#{word}")
+      @tweet = Tweet.where("content LIKE?", "%#{word}%")
     else
       @tweet = Tweet.all
     end
