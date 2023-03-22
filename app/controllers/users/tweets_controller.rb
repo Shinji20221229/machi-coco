@@ -31,10 +31,9 @@ class Users::TweetsController < ApplicationController
   end
 
   def update
-    @tweet = Tweet.new(tweet_params)
-    @tweet.user_id = current_user.id
-    if @tweet.save
-      redirect_to tweet_path(@tweet), notice: "投稿しました"
+    tweet =  Tweet.find(params[:id])
+    if tweet.update(tweet_params)
+      redirect_to tweet_path(tweet), notice: "投稿しました"
     else
       @tweets = Tweet.all
       render 'index'
@@ -50,7 +49,7 @@ class Users::TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:content, :tweet_image, :content_image)
+    params.require(:tweet).permit(:content, :tweet_image,)
   end
 
 end

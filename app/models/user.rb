@@ -26,7 +26,7 @@ class User < ApplicationRecord
   validates :last_name,presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :farst_name,presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
-
+# ゲストユーザー情報
   def self.guest
     find_or_create_by!(email: 'aaa@aaa.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -57,13 +57,13 @@ class User < ApplicationRecord
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
+      @user = User.where("last_name LIKE?", "#{word}")
     elsif search == "forward_match"
-      @user = User.where("name LIKE?", "#{word}")
+      @user = User.where("last_name LIKE?" "%#{word}")
     elsif search == "backward_match"
-      @user = User.where("name LIKE?", "#{word}")
+      @user = User.where("last_name LIKE?", "#{word}%")
     elsif search == "partial_match"
-      @user = User.where("name LIKE?", "#{word}")
+      @user = User.where("last_name LIKE?", "%#{word}%")
     else
       @user = User.all
     end

@@ -5,7 +5,7 @@ class Tweet < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   validates :content,presence:true,length:{maximum:200}
-  validates :tweet_image,presence:true
+  validates :tweet_image, presence:true, on: :create
 
   def favorited_by?(user)
    favorites.find_by(tweet_id: self.id, user_id: user.id)
