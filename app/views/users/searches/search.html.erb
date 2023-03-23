@@ -9,7 +9,9 @@
           <tbody>
           <% @users.each do |user| %>
             <tr>
+              <td><%= image_tag user.get_profile_image,size: "100x100" %></td>
               <td><%= user.last_name %> <%= user.farst_name %></td>
+              <td><%= link_to "詳細", user_path(user.id) %></td>
             </tr>
           <% end %>
           </tbody>
@@ -18,7 +20,11 @@
           <tbody>
             <% @tweets.each do |tweet| %>
               <tr>
-                <td><%= tweet.content %></td>
+                <td>
+                  <%= link_to tweet_path(tweet.id) do %>
+                    <%= tweet.content %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>

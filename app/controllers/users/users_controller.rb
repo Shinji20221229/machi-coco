@@ -6,13 +6,13 @@ class Users::UsersController < ApplicationController
     @users = User.all
     @user = current_user
     @tweet = Tweet.new
+    @users = User.page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
     @tweets = @user.tweets
     @tweet = Tweet.new
-    @tweets = @user.tweets.page(params[:page])
   end
 
   def edit
