@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="mt-5 offset-md-1">
+    <div class="px-4 px-sm-0">
       <h2><span class="bg-light">登録情報</span></h2>
       <table class="table">
         <tr>
@@ -23,8 +23,6 @@
         </div>
       <% end %>
 
-      <%= link_to "戻る", users_path, class:"btn btn-primary" %>
-
       <% if user_signed_in? && @user == current_user %>
         <% unless @user.email == "test@example.com" then %>
           <div class="mt-5 offset-md-1">
@@ -32,9 +30,14 @@
           </div>
         <% end %>
       <% end %>
+      <div>
+        <%= link_to "戻る", users_path, class:"btn btn-primary" %>
+      </div>
 
+    </div>
+    <!--自分が投稿した一覧リストの部分テンプレート-->
+    <div class="col px-8 px-sm-0">
       <%= render 'mytweet' %>
-
     </div>
   </div>
 </div>
