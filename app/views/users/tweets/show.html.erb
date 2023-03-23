@@ -35,19 +35,19 @@
               <% end %>
             </td>
             <!--いいね機能-->
-            <% if user_signed_in? %>
-              <% if @tweet.user != current_user %>
-                <td class=<%= "favalit" + @tweet.id.to_s %>>
-                  <%= render 'users/favorites/favorit', tweet: @tweet %>
-                </td>
+            <td id="like_<%= @tweet.id %>">
+              <% if user_signed_in? %>
+                <%= render 'users/favorites/favorit', tweet: @tweet %>
               <% end %>
-            <% end %>
+            </td>
             <td>
               <p>コメント件数: <%= @tweet.tweet_comments.count %></p>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <%= link_to "戻る", tweets_path, class:"btn btn-primary" %>
 
       <% if user_signed_in? %>
         <div class="commnets_area">

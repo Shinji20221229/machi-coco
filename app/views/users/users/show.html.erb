@@ -23,6 +23,8 @@
         </div>
       <% end %>
 
+      <%= link_to "戻る", users_path, class:"btn btn-primary" %>
+
       <% if user_signed_in? && @user == current_user %>
         <% unless @user.email == "test@example.com" then %>
           <div class="mt-5 offset-md-1">
@@ -30,6 +32,8 @@
           </div>
         <% end %>
       <% end %>
+
+      <%= render 'mytweet' %>
 
     </div>
   </div>

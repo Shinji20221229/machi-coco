@@ -31,6 +31,7 @@
                       <%= tweet.content %>
                     <% end %>
                   </td>
+                  <!--いいね-->
                   <td id="like_<%= tweet.id %>">
                     <% if user_signed_in? %>
                       <%= render 'users/favorites/favorit', tweet: tweet %>

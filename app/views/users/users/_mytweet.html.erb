@@ -1,0 +1,33 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md8 offset-md1">
+      <h2>Tweet履歴</h2>
+      <%#= if current_user.id == @tweet.user_id %>
+        <table class="table">
+          <tbody>
+            <% @tweet.each do |tweet| %>
+              <tr>
+                <td>
+                  <%= link_to tweet_path(tweet.id) do %>
+                    <%= image_tag tweet.get_tweet_image,size: "300x250" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to tweet_path(tweet.id) do %>
+                    <%= tweet.contet %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to '編集', edit_tweet_path(tweet.id), method: :get %>
+                </td>
+                <td>
+                  <%= link_to '削除', tweet_path(tweet.id), method: :delete %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <%# end %>
+    </div>
+  </div>
+</div>
