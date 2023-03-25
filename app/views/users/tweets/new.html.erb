@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container p-5">
     <div class="row">
         <div class="col-auto">
-          <h2>Tweet</h2>
+          <h2><span class="bg-light">New Tweet<span></h2>
 
           <% if @tweet.errors.any? %>
             <%= @tweet.errors.count %>件のエラーが発生しました
@@ -13,12 +13,15 @@
           <% end %>
 
           <%= form_with model: @tweet do |f| %>
-            <h4>画像</h4>
-               <%= f.file_field :tweet_image, accept: "image/*" %>
-            <h4>場所</h4>
-              <%= f.text_area :content %>
-              <%= f.hidden_field :content_image, value: "test" %>
-            <%= f.submit 'Tweet' %>
+          <div class="form-group">
+            <h4><span class="bg-light">画像<span></h4>
+            <%= f.file_field :tweet_image, accept: "image/*" %>
+          </div>
+          <div class="form-group">
+            <h4><span class="bg-light">場所</span></h4>
+            <%= f.text_area :content %>
+          </div>
+            <%= f.submit 'Tweet', class: 'btn-block btn btn-primary' %>
           <% end %>
         </div>
     </div>

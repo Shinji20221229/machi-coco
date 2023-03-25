@@ -22,7 +22,7 @@ class Users::TweetsController < ApplicationController
       redirect_to tweet_path(@tweet), notice: "投稿に失敗しました"
     else
       @tweets = Tweet.all
-      redirect_to tweet_path
+      redirect_to new_tweet_path
     end
   end
 

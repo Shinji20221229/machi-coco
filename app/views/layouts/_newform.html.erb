@@ -23,7 +23,9 @@
   <% end %>
 
   <!--投稿ページへのリンクボタン-->
-  <%= link_to new_tweet_path, class:"btn btn-outline-secondary btn-block" do %>
-    <button type="button" class="btn btn-light">Tweet</button>
-  <% end %>
+  <div class="my-2">
+    <%= link_to new_tweet_path do %>
+      <button type="button" class="btn-block btn btn-primary">Tweet</button>
+    <% end %>
+  </div>
 </div>
