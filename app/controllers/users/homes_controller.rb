@@ -1,9 +1,8 @@
 class Users::HomesController < ApplicationController
   def top
+    @tweets = Tweet.all
   end
 
-  def index
-  end
 
   def guest_sign_in
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|
