@@ -2,32 +2,34 @@
   <div class="row">
     <div class="col-md8 offset-md1">
       <h2>Tweet履歴</h2>
-      <%#= if current_user.id == tweet.user_id %>
-        <table class="table">
-          <tbody>
-            <% @tweets.each do |tweet| %>
-              <tr>
-                <td>
-                  <%= link_to tweet_path(tweet.id) do %>
-                    <%= image_tag tweet.get_tweet_image,size: "200x150" %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to tweet_path(tweet.id) do %>
-                    <%= tweet.content %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to "編集",edit_tweet_path(tweet.id), class:"btn btn-sm btn-success" %>
-                </td>
-                <td>
-                  <%= link_to "削除",tweet_path(tweet), method: :delete, class:"btn btn-sm btn-danger" %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <%# end %>
+      <table class="table">
+        <tbody>
+          <% @tweets.each do |tweet| %>
+            <tr>
+              <td>
+                <%= link_to tweet_path(tweet.id) do %>
+                  <%= image_tag tweet.get_tweet_image,size: "200x150" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to tweet_path(tweet.id) do %>
+                  <%= tweet.content %>
+                <% end %>
+              </td>
+              <% if user_signed_in? && @user == current_user %>
+                <% unless @user.email == "test@example.com" then %>
+                  <td>
+                    <%= link_to "編集",edit_tweet_path(tweet.id), class:"btn btn-sm btn-success" %>
+                  </td>
+                  <td>
+                    <%= link_to "削除",tweet_path(tweet), method: :delete, class:"btn btn-sm btn-danger" %>
+                  </td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

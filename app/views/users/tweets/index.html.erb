@@ -1,5 +1,4 @@
-<p class="notice"></p>
-<div class="container px-5 px-sm-0">
+<div class="container p-5">
   <% if @tweet.errors.any? %>
     <%= @tweet.errors.count %>errors prohivited this obj from being saved:
     <ul>
@@ -8,13 +7,13 @@
       <% end %>
     </ul>
   <% end %>
-    <div class="row">
+    <div class="row p-3">
     <!--登録ユーザーのみ表示部分テンプレート-->
     <% if user_signed_in? %>
       <%= render 'layouts/newform' %>
     <% end %>
-      <div class="col-md-8 offset-md-1">
-        <h2>Tweets</h2>
+      <div class="mx-auto">
+        <h2><span class="bg-light">Tweets</span></h2>
         <%= render 'users/searches/search' %>
           <table class="table">
 

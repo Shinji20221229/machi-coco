@@ -12,7 +12,7 @@
   <h3>新着投稿</h3>
   <!--card-groupというbootstrapの標準横並び機能-->
   <div class="card-group">
-    <% @tweets.first(4).each do |tweet| %>
+    <% @tweets.last(4).each do |tweet| %>
       <div class="col-md-3 mx-auto">
         <% if user_signed_in? %>
           <%= link_to tweet_path(tweet.id) do %>
