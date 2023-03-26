@@ -3,8 +3,11 @@ class Users::TweetCommentsController < ApplicationController
     tweet = Tweet.find(params[:tweet_id])
     comment = current_user.tweet_comments.new(tweet_comment_params)
     comment.tweet_id = tweet.id
-    comment.save
-    redirect_to tweet_path(tweet)
+    if comment.save
+      redirect_to tweet_path(tweet)
+    else
+      redirect_to tweet_path(tweet)
+    end
   end
 
   def destroy
