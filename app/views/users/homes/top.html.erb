@@ -1,43 +1,19 @@
-<div class="container p-5">
-  <div class="row p-3">
-    <div class="mx-auto">
-      <%= image_tag 'mountain-477832_1280.jpg', size: '1000x900', class: "img-fluid" %>
-        <p style="font-family: Hiragino Maru Gothic Pro;" >
-          Welcome to Thank you for comin！<br>
-          自分の知らない風景を探しに行きましょう！
-        </p>
-    </div>
-  </div>
+<div class="background cover align-middle">
+  <div class="text-center">
+    <p class="sub-title">思い出の風景を共有しよう</p>
+    <h1 class="title mb-2">Traveler</h1>
+    <h2 class="btn btn-success">
+      <a href="users/sign_up">新規投稿</a>
+    </h2>
+    <h2 class="btn btn-secondary">
+      <a href="about">About</a>
+    </h2>
+    <h2 class="btn btn-primary mb-2">
+      <a href="users/sign_in">ログイン</a>
+    </h2>
+    <h2 class="btn btn-info">
+      <a href="guest_sign_in">ゲストログイン</a>
+    </h2>
 
-  <h3>新着投稿</h3>
-  <!--card-groupというbootstrapの標準横並び機能-->
-  <div class="card-group">
-    <% @tweets.last(4).each do |tweet| %>
-      <div class="col-md-3 mx-auto">
-        <% if user_signed_in? %>
-          <%= link_to tweet_path(tweet.id) do %>
-            <%= image_tag tweet.get_tweet_image, size: '200x150' %>
-            <p><%= tweet.content %></p>
-          <% end %>
-        <% else %>
-          <%= link_to user_session_path do %>
-            <%= image_tag tweet.get_tweet_image, size: '200x150' %>
-            <p><%= tweet.content %></p>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div class="col-12 text-right">
-      <% if user_signed_in? %>
-        <%= link_to "Tweetを見る >>", tweets_path %>
-      <% else %>
-        <%= link_to user_session_path do %>
-          Tweetを見る >>
-        <% end %>
-      <% end %>
-    </div>
   </div>
 </div>

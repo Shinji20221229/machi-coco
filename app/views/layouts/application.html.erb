@@ -5,90 +5,92 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header>
-      <!--<ヘッダーの色>-->
-      <nav class="navbar navbar-expand-lg" style="background-color:  #007bff;">
-        <!--トップ画面へのルートと画像-->
-        <%= link_to root_path("users/homes#top") do %>
-          <%= image_tag 'pcsp019.png', size: '150x150', class: "img-fluid" %>
-        <% end %>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-          <% if not request.fullpath.include? "admin" %>
-            <% if user_signed_in? %>
-              <span class="navbar-brand mb-0 h1">ようこそ、<%= current_user.last_name %><%= current_user.farst_name %>さん！！</span>
-              <li class="nav-item pl-3">
-                <%= link_to user_path(current_user), class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">マイページ</button>
-                <% end %>
-              </li>
-              <li class="nav-item pl-3">
-                <%= link_to tweets_path, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">投稿一覧</button>
-                <% end %>
-              </li>
-              <li class="nav-item pl-3">
-                <%= link_to users_path, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">ユーザー一覧</button>
-                <% end %>
-              </li>
-              <li class="nav-item pl-3">
-                <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">ログアウト</button>
-                <% end %>
-              </li>
-
-            <% else %>
-              <li class="nav-item pl-3">
-                <%= link_to about_path, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">About</button>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to homes_guest_sign_in_path, method: :post, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">ゲストログイン（閲覧用）</button>
-                <% end %>
-              </li>
-              <li class="nav-item pl-3">
-                <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">新規登録</button>
-                <% end %>
-              </li>
-              <li class="nav-item pl-3">
-                <%= link_to user_session_path, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">ログイン</button>
-                <% end %>
-              </li>
-            <% end %>
-
-            <% else %>
-            <% if admin_signed_in? %>
-              <li class="nav-item pl-3">
-                <%= link_to admin_tweets_path, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">投稿一覧</button>
-                <% end %>
-              </li>
-              <li class="nav-item pl-3">
-                <%= link_to admin_users_path, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">ユーザー一覧</button>
-                <% end %>
-              </li>
-              <li class="nav-item pl-3">
-                <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
-                  <button type="button" class="btn btn-light">ログアウト</button>
-                <% end %>
-              </li>
-            <% end %>
+    <% unless current_page?(root_path) %>
+      <header>
+        <!--<ヘッダーの色>-->
+        <nav class="navbar navbar-expand-lg" style="background-color:  #007bff;">
+          <!--トップ画面へのルートと画像-->
+          <%= link_to root_path("users/homes#top") do %>
+            <%= image_tag 'pcsp019.png', size: '150x150', class: "img-fluid" %>
           <% end %>
-          </ul>
-        </div>
-      </nav>
-    </header>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if not request.fullpath.include? "admin" %>
+              <% if user_signed_in? %>
+                <span class="navbar-brand mb-0 h1">ようこそ、<%= current_user.last_name %><%= current_user.farst_name %>さん！！</span>
+                <li class="nav-item pl-3">
+                  <%= link_to user_path(current_user), class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">マイページ</button>
+                  <% end %>
+                </li>
+                <li class="nav-item pl-3">
+                  <%= link_to tweets_path, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">投稿一覧</button>
+                  <% end %>
+                </li>
+                <li class="nav-item pl-3">
+                  <%= link_to users_path, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">ユーザー一覧</button>
+                  <% end %>
+                </li>
+                <li class="nav-item pl-3">
+                  <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">ログアウト</button>
+                  <% end %>
+                </li>
+
+              <% else %>
+                <li class="nav-item pl-3">
+                  <%= link_to about_path, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">About</button>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to homes_guest_sign_in_path, method: :post, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">ゲストログイン（閲覧用）</button>
+                  <% end %>
+                </li>
+                <li class="nav-item pl-3">
+                  <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">新規登録</button>
+                  <% end %>
+                </li>
+                <li class="nav-item pl-3">
+                  <%= link_to user_session_path, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">ログイン</button>
+                  <% end %>
+                </li>
+              <% end %>
+
+              <% else %>
+              <% if admin_signed_in? %>
+                <li class="nav-item pl-3">
+                  <%= link_to admin_tweets_path, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">投稿一覧</button>
+                  <% end %>
+                </li>
+                <li class="nav-item pl-3">
+                  <%= link_to admin_users_path, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">ユーザー一覧</button>
+                  <% end %>
+                </li>
+                <li class="nav-item pl-3">
+                  <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                    <button type="button" class="btn btn-light">ログアウト</button>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+            </ul>
+          </div>
+        </nav>
+      </header>
+    <% end %>
 
     <%= yield %>
   </body>
