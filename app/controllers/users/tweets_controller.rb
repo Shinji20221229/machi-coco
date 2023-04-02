@@ -19,6 +19,10 @@ class Users::TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     if @tweet.save
+      tags = Vision.get_image_data(@tweet.tweet_image)
+      tags.each do |tag|
+        @tweet.tags.create(name: tag)
+      end
       redirect_to tweet_path(@tweet), notice: "投稿に失敗しました"
     else
       @tweets = Tweet.all

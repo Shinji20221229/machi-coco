@@ -11,7 +11,7 @@ class Users::HomesController < ApplicationController
       user.last_name = "Guest"
     end
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました'
+    redirect_to tweets_path, notice: 'ゲストユーザーとしてログインしました'
   end
 
 end

@@ -41,6 +41,7 @@
     <!--自分が投稿した一覧リストの部分テンプレート-->
     <div class="col-8">
       <%= render 'mytweet' %>
+      <%= paginate @tweets %>
     </div>
   </div>
 </div>
