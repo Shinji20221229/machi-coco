@@ -17,6 +17,10 @@
             <td>
               <%= link_to tweet_path(@tweet.id) do %>
                 <%= image_tag @tweet.get_tweet_image,size: "300x250" %>
+              <% end %><br>
+              <!--AI画像認識表示-->
+              <% @tweet.tags.each do |tweet| %>
+                <span class="badge badge-pill badge badge-info"><%= tweet.name %></span>
               <% end %>
             </td>
             <td>
@@ -65,7 +69,3 @@
   </div>
 </div>
 
-
-<% @tweet.tags.each do |tweet| %>
-  <%= tweet.name %>
-<%end%>
