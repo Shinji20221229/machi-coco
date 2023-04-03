@@ -35,6 +35,8 @@
                         <% if user_signed_in? %>
                           <%= render 'users/favorites/favorit', tweet: tweet %>
                         <% end %>
+                      </div>
+                      <div>
                         <%= link_to "#{tweet.tweet_comments.count} コメント", tweet_path(tweet.id) %>
                       </div>
                     </div>

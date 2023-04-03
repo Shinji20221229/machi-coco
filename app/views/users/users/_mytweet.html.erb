@@ -1,5 +1,5 @@
   <div class="row">
-    <div class="col-md8 offset-md1">
+    <div class="col-8">
       <h2><span class="bg-light">Tweet履歴</span></h2>
       <table class="table">
         <tbody>
@@ -7,13 +7,21 @@
             <tr>
               <td>
                 <%= link_to tweet_path(tweet.id) do %>
-                  <%= image_tag tweet.get_tweet_image,size: "200x150" %>
+                  <%= image_tag tweet.get_tweet_image,size: "250x200" %>
                 <% end %>
               </td>
               <td>
                 <%= link_to tweet_path(tweet.id) do %>
                   <%= tweet.content %>
                 <% end %>
+              </td>
+              <td>
+                フォロー数
+                <%= link_to current_user.followings.count, user_followings_path(current_user) %>
+              </td>
+              <td>
+                フォロワー数
+                <%= link_to current_user.followers.count, user_followers_path(current_user) %>
               </td>
               <% if user_signed_in? && @user == current_user %>
                 <% unless @user.email == "test@example.com" then %>
