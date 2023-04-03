@@ -4,7 +4,7 @@ class Users::TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.page(params[:page]).per(5)
+    @tweets = Tweet.page(params[:page]).per(12)
     @tweet = Tweet.new
     @user = current_user
   end
