@@ -1,10 +1,15 @@
 class Admin::UsersController < ApplicationController
   def index
     @users = User.all
+    @user = current_user
+    @tweet = Tweet.new
+    @users = User.page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
+    @tweets = @user.tweets.order("created_at DESC").page(params[:page]).per(5)
+    @tweet = Tweet.new
   end
 
   def edit

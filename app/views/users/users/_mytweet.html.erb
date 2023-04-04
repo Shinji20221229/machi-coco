@@ -15,14 +15,16 @@
                   <%= tweet.content %>
                 <% end %>
               </td>
-              <td>
-                フォロー数
-                <%= link_to current_user.followings.count, user_followings_path(current_user) %>
-              </td>
-              <td>
-                フォロワー数
-                <%= link_to current_user.followers.count, user_followers_path(current_user) %>
-              </td>
+              <% if ! admin_signed_in? %>
+                <td>
+                  フォロー数
+                  <%= link_to current_user.followings.count, user_followings_path(current_user) %>
+                </td>
+                <td>
+                  フォロワー数
+                  <%= link_to current_user.followers.count, user_followers_path(current_user) %>
+                </td>
+              <% end %>
               <% if user_signed_in? && @user == current_user %>
                 <% unless @user.email == "test@example.com" then %>
                   <td>
