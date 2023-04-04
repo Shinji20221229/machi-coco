@@ -1,7 +1,7 @@
-<div class="container p-5">
-  <div class="row p-3">
+<div class="container-fluid p-5">
+  <div class="row">
     <!--部分テンプレート-->
-    <div class="mx-auto">
+    <div class="col-5">
       <h2>投稿詳細</h2>
       <table class="table">
         <tbody>
@@ -52,20 +52,23 @@
       </table>
 
       <%= link_to "戻る", tweets_path, class:"btn btn-primary" %>
-
-      <% if user_signed_in? %>
-        <div class="commnets_area">
-          <!--コメントフォームのレンダー-->
-          <%= render 'users/comments/form', tweet: @tweet, comment: @tweet %>
-        </div>
-        <div>
-          <%= form_with model: [@tweet, @tweet_comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-            <%= f.submit "送信" %>
-          <% end %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
 
+  <div class="col-7">
+    <div class="auto">
+    <% if user_signed_in? %>
+      <div class="commnets_area">
+        <!--コメントフォームのレンダー-->
+        <%= render 'users/comments/form', tweet: @tweet, comment: @tweet %>
+      </div>
+      <div>
+        <%= form_with model: [@tweet, @tweet_comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+  </div>
