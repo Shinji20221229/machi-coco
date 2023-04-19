@@ -1,4 +1,7 @@
 class Admin::TweetsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :correct_tweets,only: [:index, :show]
+
   def index
     @tweets = Tweet.page(params[:page]).per(12)
     @tweet = Tweet.new
