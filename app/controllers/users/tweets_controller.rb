@@ -1,4 +1,7 @@
 class Users::TweetsController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :correct_tweet,only: [:edit]
+
   def new
     @tweet = Tweet.new
   end
